@@ -1,0 +1,150 @@
+﻿@model StoreTicket.Models.PassionuserDto
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+
+<div class="back-list">
+    <a href="/User/List">Go Back To User List</a>
+    <p> / </p>
+    <a href="/User/Details/@Model.UserId">Go Back To Details</a>
+</div>
+<h2 class="create-title">Update User For @Model.UserFirstName @Model.UserLastName</h2>
+<div class="form-wrapper">
+    <form class="form-floating" action="/User/Update/@Model.UserId" method="POST">
+        <div class="input-wrapper">
+            <div style="display:none;">
+                @* Pass through the User ID *@
+                <input type="text" name="UserID" value="@Model.UserId" />
+            </div>
+            <div class="form-floating">
+                <label for="floatingInputValue">Name:</label>
+                <input class="form-control" id="floatingInputValue" type="text" name="UserFirstName" value="@Model.UserFirstName" />
+            </div>
+            <div>
+                <label for="floatingInputValue">Last Name:</label>
+                <input class="form-control" id="floatingInputValue" type="text" name="UserLastName" value="@Model.UserLastName" />
+            </div>
+            <div>
+                <label for="floatingInputValue">Account ID:</label>
+                <input class="form-control" id="floatingInputValue" type="text" name="AccountName" value="@Model.AccountName" />
+            </div>
+            <div>
+                <label for="floatingInputValue">Phone:</label>
+                <input class="form-control" id="floatingInputValue" type="tel" name="PhoneNnumber" value="@Model.PhoneNnumber" />
+            </div>
+            <div>
+                <label for="floatingInputValue">Email:</label>
+                <input class="form-control" id="floatingInputValue" type="email" name="EmailAddress" value="@Model.EmailAddress" />
+            </div>
+            <div>
+                <label for="floatingInputValue">Date of Birth:</label>
+                <input class="form-control" id="floatingInputValue" type="text" name="BirthDate" value="@Model.BirthDate" />
+            </div>
+            <div>
+                <input class="btn btn-primary add-button" type="submit" value="Update User" />
+            </div>
+        </div>
+    </form>
+</div>
+
+
+@section Styles
+{
+    <style type="text/css">
+        .form-wrapper {
+            position: absolute;
+            top: 22%;
+            left: 27%;
+            border-radius: 20px;
+            background-color: RGB(33, 30, 30, 0.8);
+            padding: 1em 0 1.5em 4em;
+            color: white;
+            width: 45%;
+            height: 70%;
+            overflow-y: scroll;
+            display: flex;
+        }
+
+        label {
+            margin-top: 0.5em;
+            font-size: 1.5em;
+        }
+
+        .input-wrapper {
+            position: relative;
+            left: 30%;
+            width: 150%;
+        }
+
+
+        .add-button {
+            margin-top: 2em;
+            margin-bottom: 1em;
+            background-color: #8338EC;
+        }
+
+        .create-title {
+            position: absolute;
+            top: 10%;
+            color: white;
+            font-size: 2em;
+            padding-left: 2em;
+            font-family: 'Paytone One', sans-serif;
+            font-weight: bolder;
+        }
+
+        .back-list {
+            color: white;
+            display: flex;
+            flex-direction: row;
+            position: absolute;
+            top: 12%;
+            right: 5%;
+            gap: 0.5em;
+        }
+
+        .back-list a {
+            color: white;
+        }
+
+        .back-list a:hover {
+            color: aqua;
+        }
+
+        /*.select-wrapper {
+            display: flex;
+            flex-direction: column;
+        }
+
+        select {
+            width: 280px;
+            height: 2.5em;
+            color: black;
+            border-radius: 5px;
+        }
+
+        option {
+            width: 280px;
+            height: 2.5em;
+        }*/
+
+        ::-webkit-scrollbar {
+            width: 20px;
+        }
+
+        ::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 5px grey;
+            border-radius: 10px;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: RGB(33, 30, 30, 0.8);
+            border-radius: 10px;
+        }
+    </style>
+}
+
+

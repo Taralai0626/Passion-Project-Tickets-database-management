@@ -1,0 +1,33 @@
+﻿@model IEnumerable<StoreTicket.Models.Purchase>
+@{
+    ViewBag.Title = "Create";
+}
+
+<a href="/Purchase/List">Go back to Purchase</a>
+<br />
+<h2>Create New Purchase</h2>
+<br />
+<form action="/Purchase/Create" method="POST">
+    <div>
+        <label>User Id: </label> <input type="text" name="UserId" />
+    </div>
+    <div>
+        <label>Ticket Id: </label> <input type="text" name="TicketId" />
+    </div>
+    <div>
+        <label>Purchase Date: </label> <input type="date" name="PurchaseDate" />
+    </div>
+    <div>
+        <label>Purchase Price: </label> <input type="text" name="PurchasePrice" />
+    </div>
+    <div>
+        <label>Number Of Ticket: </label> <input type="number" name="NumberOfTicket" />
+    </div>
+    <div>
+        <input type="submit" value="Add Purchase" />
+    </div>
+</form>
+
+
+
+

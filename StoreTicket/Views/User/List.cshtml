@@ -1,0 +1,84 @@
+﻿@model IEnumerable<StoreTicket.Models.PassionuserDto>
+@{
+    ViewBag.Title = "List";
+
+}
+
+<h2 class="list-title">Passion User List</h2>
+<div class="add-ticket">
+    <a href="/User/New">Add New User</a>
+</div>
+<div class="list-group list-layout">
+    @foreach (var user in Model)
+    {
+        <h3><a href="/User/Details/@user.UserId">@user.UserFirstName @user.UserLastName</a></h3>
+        <h4><strong>User ID Name: </strong>@user.AccountName</h4>
+        //<h4>Phone: @user.PhoneNnumber</h4>
+        //<h4>Email: @user.EmailAddress</h4>
+        //<h4>Date of Birth: @user.BirthDate</h4>
+
+    }
+</div>
+
+    @section Styles
+{
+        <style type="text/css">
+            .list-layout {
+                position: absolute;
+                top: 25%;
+                left: 25%;
+                border-radius: 20px;
+                background-color: RGB(33, 30, 30, 0.8);
+                text-align: center;
+                width: 50%;
+                height: 60%;
+                padding: 2em;
+                color: white;
+                font-family: 'Roboto', sans-serif;
+                overflow-y: scroll;
+            }
+            h3 a{
+                color:deepskyblue
+            }
+            a:hover {
+                color: aqua;
+            }
+
+            .list-title {
+                color: white;
+                font-size: 2em;
+                padding-left: 2em;
+                font-family: 'Paytone One', sans-serif;
+                font-weight: bolder;
+            }
+
+            .add-ticket {
+                position: absolute;
+                top: 15%;
+                right: 5%;
+            }
+
+            .add-ticket a {
+                color: white;
+            }
+
+            .add-ticket a:hover {
+                color: aqua;
+            }
+
+            ::-webkit-scrollbar {
+                width: 20px;
+            }
+
+            ::-webkit-scrollbar-track {
+                box-shadow: inset 0 0 5px grey;
+                border-radius: 10px;
+            }
+
+            /* Handle */
+            ::-webkit-scrollbar-thumb {
+                background: RGB(33, 30, 30, 0.8);
+                border-radius: 10px;
+            }
+        </style>
+    }

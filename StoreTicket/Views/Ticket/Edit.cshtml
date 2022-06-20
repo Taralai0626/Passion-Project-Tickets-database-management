@@ -1,0 +1,160 @@
+﻿@model StoreTicket.Models.ViewModels.UpdateTicket
+
+@{
+    ViewBag.Title = "Edit";
+}
+}
+
+<div class="back-list">
+    <a href="/Ticket/Details/@Model.SelectedTicket.TicketId">Go Back to Details</a>
+    <p> / </p>
+    <a href="/Ticket/List">Go Back to Ticket list</a>
+</div>
+<h2 class="create-title">Update Ticket For @Model.SelectedTicket.EventName</h2>
+<div class="form-wrapper">
+    <form class="form-floating" action="/Ticket/Update/@Model.SelectedTicket.TicketId" method="POST" enctype="multipart/form-data">
+        <div class="input-wrapper">
+            <div style="display:none;">
+                @* Pass through the Ticket ID *@
+                <input type="text" name="TicketId" value="@Model.SelectedTicket.TicketId" />
+            </div>
+            <div>
+                <label>Event Name:</label> <input class="form-control" id="floatingInputValue" type="text" name="EventName" value="@Model.SelectedTicket.EventName" />
+            </div>
+            <div class="select-wrapper">
+                <label>Website:</label>
+                <select class="form-select form-select-lg mb-3" aria-label="Default select example" name="WebsiteId">
+                    @foreach (var website in Model.WebsiteOptions)
+                    {
+                        string selected = "";
+                        if (website.WebsiteId == Model.SelectedTicket.WebsiteId)
+                        {
+                            selected = "selected";
+                        }
+                        <option value="@website.WebsiteId" @selected>@website.WebsiteId  @website.WebsiteName</option>
+                    }
+                </select>
+            </div>
+            <div>
+                <label for="floatingInputValue">Event Type:</label> <input class="form-control" id="floatingInputValue" type="text" name="EventType" value="@Model.SelectedTicket.EventType" />
+            </div>
+            <div>
+                <label for="floatingInputValue">Venue:</label> <input class="form-control" id="floatingInputValue" type="text" name="EventVenue" value="@Model.SelectedTicket.EventVenue" />
+            </div>
+            <div>
+                <label for="floatingInputValue">Location:</label> <input class="form-control" id="floatingInputValue" type="text" name="EventLocation" value="@Model.SelectedTicket.EventLocation" />
+            </div>
+            <div>
+                <label for="floatingInputValue">Date:</label> <input class="form-control" id="floatingInputValue" type="text" name="EventDate" value="@Model.SelectedTicket.EventDate" />
+            </div>
+            <div>
+                <label for="floatingInputValue">Starting Price:</label> <input class="form-control" id="floatingInputValue" type="text" name="TicketStartingPrice" value="@Model.SelectedTicket.TicketStartingPrice" />
+            </div>
+            <div>
+                <label for="floatingInputValue">Upload Photo:</label><input class="form-control" id="floatingInputValue" type="file" name="TicketPic" />
+            </div>
+            <div>
+                <input class="btn btn-primary add-button" type="submit" value="Update Ticket" />
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Styles
+{
+    <style type="text/css">
+        .form-wrapper {
+            position: absolute;
+            top: 22%;
+            left: 27%;
+            border-radius: 20px;
+            background-color: RGB(33, 30, 30, 0.8);
+            padding: 1em 0 1.5em 4em;
+            color: white;
+            width: 45%;
+            height: 70%;
+            overflow-y: scroll;
+            display: flex;
+        }
+
+        label {
+            margin-top: 0.5em;
+            font-size: 1.5em;
+        }
+
+        .input-wrapper {
+            position: relative;
+            left: 30%;
+            width: 150%;
+        }
+
+
+        .add-button {
+            margin-top: 2em;
+            margin-bottom: 1em;
+            background-color: #8338EC;
+        }
+
+        .create-title {
+            position: absolute;
+            top: 10%;
+            color: white;
+            font-size: 2em;
+            padding-left: 2em;
+            font-family: 'Paytone One', sans-serif;
+            font-weight: bolder;
+        }
+
+        .back-list {    
+            color: white;
+            display: flex;
+            flex-direction: row;
+            position: absolute;
+            top: 12%;
+            right: 5%;
+            gap:0.5em;
+        }
+
+        .back-list a {
+            color: white;
+        }
+
+        .back-list a:hover {
+            color: aqua;
+        }
+
+        .select-wrapper {
+            display: flex;
+            flex-direction: column;
+        }
+
+        select {
+            width: 280px;
+            height: 2.5em;
+            color: black;
+            border-radius: 5px;
+        }
+
+        option {
+            width: 280px;
+            height: 2.5em;
+        }
+
+        ::-webkit-scrollbar {
+            width: 20px;
+        }
+
+        ::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 5px grey;
+            border-radius: 10px;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: RGB(33, 30, 30, 0.8);
+            border-radius: 10px;
+        }
+    </style>
+}
+
+

@@ -1,0 +1,11 @@
+﻿@model StoreTicket.Models.PurchaseDto
+@{
+    ViewBag.Title = "DeleteConfirm";
+}
+
+<h2>Are you sure you want to delete this purchase?</h2>
+<a href="/Purchase/List">Cancel</a>
+<h3>Purchase ID: @Model.PurchaseId Ticket ID: @Model.TicketId Price: @Model.PurchasePrice</h3>
+<form action="/Purchase/Delete/@Model.PurchaseId" method="POST">
+    <input type="submit" value="Confirm Delete" />
+</form>

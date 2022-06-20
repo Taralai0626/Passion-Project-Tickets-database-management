@@ -1,0 +1,190 @@
+﻿@model StoreTicket.Models.ViewModels.DetailsWebsite
+@{
+    ViewBag.Title = "View";
+}
+<h2 class="list-title">Details for @Model.SelectedWebsite.WebsiteName</h2>
+<div class="option-list">
+    <a href="/Website/List">Go back to list</a>
+    <p> > </p>
+    <a href="/Website/Edit/@Model.SelectedWebsite.WebsiteId">Update</a>
+</div>
+<div class="content-wrapper">
+    <div class="detail-wrapper">
+        <div class="ticket-delete">
+            <a href="/Website/DeleteConfirm/@Model.SelectedWebsite.WebsiteId">Delete</a>
+        </div>
+        <h1><strong>@Model.SelectedWebsite.WebsiteName</strong></h1>
+        <h3><strong>Website ID: </strong>@Model.SelectedWebsite.WebsiteId</h3>
+        <h3><strong>Website Type: </strong>@Model.SelectedWebsite.WebsiteType</h3>
+    </div>
+    <div class="associate-wrapper">
+        <div class="associate_tittle">
+            <h3><strong>Tickets related to this website</strong></h3>
+        </div>
+        <div class="listUsers">
+            @foreach (var ticket in Model.RelatedTickets)
+            {
+                <a href="/Ticket/Details/@ticket.TicketId">@ticket.EventName</a>
+
+            }
+        </div>
+    </div>
+</div>
+
+@section Styles
+{
+    <style type="text/css">
+        .list-title {
+            color: white;
+            font-size: 2em;
+            padding-left: 2em;
+            font-family: 'Paytone One', sans-serif;
+            font-weight: bolder;
+        }
+
+        .option-list {
+            color: white;
+            display: flex;
+            flex-direction: row;
+            position: absolute;
+            top: 12%;
+            right: 5%;
+        }
+
+        .option-list a, p {
+            color: white;
+            margin-left: 1em;
+        }
+
+        .option-list a:hover {
+            color: aqua;
+        }
+
+        .content-wrapper {
+            position: absolute;
+            top: 20%;
+            left: 10%;
+            display: flex;
+            flex-direction: row;
+            gap: 4em;
+            width: 80%;
+            justify-content: center;
+        }
+
+        /* .img-wrapper {
+            border-radius: 20px;
+            background-color: RGB(33, 30, 30, 0.8);
+            width: 60vw;
+            height: 70vh;
+        }
+
+            .img-wrapper img {
+                position: relative;
+                width: 90%;
+                top: 20%;
+                left: 5%;
+            }*/
+        .ticket-delete a {
+            display: flex;
+            justify-content: end;
+            color: #8338EC;
+        }
+
+        .detail-wrapper {
+            /*position: absolute;
+        top: 25%;
+        left: 25%;*/
+            border-radius: 20px;
+            background-color: RGB(33, 30, 30, 0.8);
+            text-align: center;
+            width: 60vw;
+            height: 70vh;
+            padding: 2em;
+            color: white;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .associate-wrapper {
+            border-radius: 20px;
+            background-color: RGB(33, 30, 30, 0.8);
+            text-align: left;
+            width: 60vw;
+            height: 70vh;
+            color: white;
+            gap: 3em;
+            font-size: 1em;
+        }
+
+        .associate-wrapper a {
+            color: white;
+        }
+
+        .associate-wrapper a:hover {
+            color: aqua;
+        }
+
+        .associate_tittle {
+            padding: 2em 0;
+            text-align: center;
+        }
+
+        .associate_tittle h5 {
+            font-size: 18px;
+            font-weight: bolder;
+        }
+
+        .add-associate {
+            padding-top: 2em;
+        }
+
+        .select-wrapper {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+
+        select {
+            width: 125px;
+            height: 2em;
+            color: black;
+            border-radius: 5px;
+        }
+
+        option {
+            width: 150px;
+            height: 2.5em;
+        }
+
+        .add-button {
+            background-color: #8338EC;
+        }
+
+        .listUsers {
+            border-radius: 20px;
+            height: 60%;
+            width: 80%;
+            background-color: rgba(131, 56, 236, 0.3);
+            overflow-y: scroll;
+            padding: 1em;
+            margin-left: 2.25em;
+            font-size: 1.5em;
+            display:flex;
+            flex-direction:column;
+        }
+
+        ::-webkit-scrollbar {
+            width: 20px;
+        }
+
+        ::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 5px grey;
+            border-radius: 10px;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: RGB(33, 30, 30, 0.8);
+            border-radius: 10px;
+        }
+    </style>
+}

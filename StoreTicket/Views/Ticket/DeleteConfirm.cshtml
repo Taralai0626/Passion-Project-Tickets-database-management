@@ -1,0 +1,49 @@
+﻿@model StoreTicket.Models.TicketDto
+@{
+    ViewBag.Title = "DeleteConfirm";
+}
+
+<div class="confirm-container">
+    <div>
+        <h2>Are You Sure You Tant To Delete The Ticket For @Model.EventName?</h2>
+    </div>
+    <div>
+        <form action="/Ticket/Delete/@Model.TicketId" method="POST">
+            <input class="btn btn-primary del-button" type="submit" value="Confirm Delete" />
+            <a href="/Ticket/List"><input class="btn btn-primary del-button" type="button" value="Cancel" /></a>
+        </form>
+    </div>
+</div>
+
+
+@section Styles
+{
+    <style type="text/css">
+
+        h2 {
+            font-family: 'Paytone One', sans-serif;
+            font-weight: bolder;
+            color: white;
+            font-size: 2em;
+        }
+
+        .cancel-btn a{
+            display: flex;
+            justify-content: end;
+            color: #8338EC;
+        }
+
+        .del-button {
+            background-color: #8338EC;
+        }
+
+        .confirm-container {
+            display: flex;
+            flex-direction:column;
+            height: 60vh;
+            vertical-align: middle;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+}

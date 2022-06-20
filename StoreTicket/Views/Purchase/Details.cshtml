@@ -1,0 +1,21 @@
+﻿@model StoreTicket.Models.PurchaseDto
+
+@{
+    ViewBag.Title = "View";
+}
+
+<a href="/Purchase/List">Go back to list</a>
+<br />
+<a href="/Purchase/Edit/@Model.PurchaseId">Update</a>
+<br />
+<a style="color:#ab2020;" href="/Purchase/DeleteConfirm/@Model.PurchaseId">Delete</a>
+<h4><strong>Purchase Id: </strong>@Model.PurchaseId</h4>
+<h4><strong>User Id: </strong>@Model.UserId &#10132;<a href="/User/Details/@Model.UserId"> User Detail</a></h4>
+<h4><strong>Ticket Id: </strong> @Model.TicketId &#10132;<a href="/Ticket/Details/@Model.TicketId"> Ticket Detail</a></h4>
+<h4><strong>Purchase Date: </strong> @Model.PurchaseDate</h4>
+<h4><strong>Purchace Price: </strong>@Model.PurchasePrice</h4>
+<h4><strong>Number Of Ticket: </strong>@Model.NumberOfTicket</h4>
+
+
+
+

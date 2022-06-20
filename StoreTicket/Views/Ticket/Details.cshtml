@@ -1,0 +1,218 @@
+﻿@model StoreTicket.Models.ViewModels.DetailsTicket
+@{
+    ViewBag.Title = "View";
+}
+<h2 class="list-title">Details for @Model.SelectedTicket.EventName</h2>
+<div class="option-list">
+    <a href="/Ticket/List">Go Back to Ticket List</a>
+    <p> > </p>
+    <a href="/Ticket/Edit/@Model.SelectedTicket.TicketId">Update Ticket</a>
+</div>
+<div class="content-wrapper">
+    @{
+        string imageurl = "/Content/Images/Tickets/default.jpg";
+
+        imageurl = "/Content/Images/Tickets/" + Model.SelectedTicket.TicketId + "." + Model.SelectedTicket.TicketPhoto;
+
+    }
+    <!-- <div class="img-wrapper"><img style="display:block; max-width:100%;" alt="@Model.SelectedTicket.EventName" src="@imageurl"/></div>-->
+    <div class="img-wrapper"><img style="display:block; max-width:100%;" src="~/Content/image/GlassAnimals.jpg" /></div>
+    <div class="detail-wrapper">
+        <div class="ticket-delete">
+            <a href="/Ticket/DeleteConfirm/@Model.SelectedTicket.TicketId">Delete</a>
+        </div>
+        <div class="user-wrapper">
+            <h4><strong>@Model.SelectedTicket.EventName</strong></h4>
+            <h4><strong>Ticket Id: </strong>@Model.SelectedTicket.TicketId</h4>
+            <h4><strong>Website Id: </strong>@Model.SelectedTicket.WebsiteId</h4>
+            <h4><strong>Event Type: </strong>@Model.SelectedTicket.EventType</h4>
+            <h4><strong>Venue: </strong> @Model.SelectedTicket.EventVenue</h4>
+            <h4><strong>Location: </strong> @Model.SelectedTicket.EventLocation</h4>
+            <h4><strong>Date: </strong>@Model.SelectedTicket.EventDate</h4>
+            <h4><strong>Starting Price: </strong>@Model.SelectedTicket.TicketStartingPrice</h4>
+        </div>
+    </div>
+    <div class="associate-wrapper">
+        <div class="associate_tittle">
+            <h5>Users Who Have This Ticket:</h5>
+        </div>
+        <div class="listUsers">
+            @foreach (var user in Model.ResponsibleUsers)
+            {
+                <a href="/User/Details/@user.UserId">@user.UserFirstName @user.UserLastName</a><a style="color:#8338EC;" href="/Ticket/UnAssociate/@Model.SelectedTicket.TicketId?UserId=@user.UserId">[x]</a><br />
+            }
+        </div>
+        <div class="add-associate">
+            <p>Add New User Who Bought This Ticket</p>
+            <div class="select-wrapper">
+                <form method="POST" action="/Ticket/Associate/@Model.SelectedTicket.TicketId">
+                    <select name="UserId">
+                        <option value="">Select User</option>
+                        @foreach (var user in Model.AvailableUsers)
+                        {
+                            <option value="@user.UserId">@user.UserFirstName @user.UserLastName</option>
+                        }
+                    </select>
+                    <input class="btn btn-primary add-button" type="submit" value="Add User" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles
+{
+    <style type="text/css">
+        .list-title {
+            color: white;
+            font-size: 2em;
+            padding-left: 2em;
+            font-family: 'Paytone One', sans-serif;
+            font-weight: bolder;
+        }
+        .option-list {
+            color: white;
+            display: flex;
+            flex-direction: row;
+            position: absolute;
+            top: 12%;
+            right: 5%;
+        }
+
+        .option-list a, p{
+            color: white;
+            margin-left: 1em;
+        }
+
+        .option-list a:hover {
+            color: aqua;
+        }
+        .ticket-delete a{
+            display: flex;
+            justify-content: end;
+            color: #8338EC;
+
+        }
+
+        .content-wrapper {
+            position: absolute;
+            top: 20%;
+            left: 10%;
+            display: flex;
+            flex-direction: row;
+            gap: 4em;
+            width: 80%;
+            justify-content: center;
+        }
+
+        .img-wrapper {
+            border-radius: 20px;
+            background-color: RGB(33, 30, 30, 0.8);
+            width: 60vw;
+            height: 70vh;
+            
+        }
+        .img-wrapper img {
+            position: relative;
+            width:90%;
+            top:20%;
+            left:5%;
+        }
+        .detail-wrapper {
+            /*position: absolute;
+        top: 25%;
+        left: 25%;*/
+            border-radius: 20px;
+            background-color: RGB(33, 30, 30, 0.8);
+            text-align: center;
+            width: 60vw;
+            height: 70vh;
+            padding: 2em;
+            color: white;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .associate-wrapper {
+            border-radius: 20px;
+            background-color: RGB(33, 30, 30, 0.8);
+            text-align: left;
+            width: 60vw;
+            height: 70vh;
+            color: white;
+            gap: 3em;
+            font-size: 1em;
+        }
+
+        .associate-wrapper a {
+            color: white;
+        }
+
+        .associate-wrapper a:hover {
+            color:aqua;
+        }
+
+        .associate_tittle{
+            padding: 2em 0;
+            text-align:center;
+        }
+
+        .associate_tittle h5{
+            font-size:18px;
+            font-weight:bolder;
+        }
+
+        .add-associate {
+            padding-top: 2em;
+        }
+
+        .select-wrapper{
+            display:flex;
+            flex-direction:row;
+            justify-content:center;
+        }
+
+        select {
+            width: 125px;
+            height: 2em;
+            color: black;
+            border-radius: 5px;
+            
+        }
+
+        option {
+            width: 150px;
+            height: 2.5em;
+        }
+
+        .add-button {    
+            background-color: #8338EC;
+        }
+
+        .listUsers {
+            border-radius: 20px;
+            height: 50%;
+            width:80%;
+            background-color: rgba(131, 56, 236, 0.3);
+            overflow-y: scroll;
+            padding: 1em;
+            margin-left: 1.5em;
+            font-size: 1.5em;
+        }
+
+        ::-webkit-scrollbar {
+            width: 20px;
+        }
+
+        ::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 5px grey;
+            border-radius: 10px;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: RGB(33, 30, 30, 0.8);
+            border-radius: 10px;
+        }
+
+    </style>
+}

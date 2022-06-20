@@ -1,0 +1,101 @@
+﻿@model IEnumerable<StoreTicket.Models.Website>
+
+@{
+    ViewBag.Title = "Create";
+}
+<div class="back-list">
+    <a href="/Website/List">Go Back To List</a>
+</div>
+<br />
+<h2 class="create-title">Create New Website</h2>
+<br />
+<div class="form-wrapper">
+    <form class="form-floating" action="/Website/Create" method="POST">
+        <div class="input-wrapper">
+            <div>
+                <label for="floatingInput">Website Name:</label> <input class="form-control" id="floatingInput" type="text" name="WebsiteName" />
+            </div>
+            <div>
+                <label for="floatingInput">Website Type:</label> <input class="form-control" id="floatingInput" type="text" name="WebsiteType" />
+            </div>
+            <div>
+                <input class="btn btn-primary add-button" type="submit" value="Add Website" />
+            </div>
+        </div>
+</form>
+</div>
+
+@section Styles
+{
+    <style type="text/css">
+        .form-wrapper {
+            position: absolute;
+            top: 22%;
+            left: 27%;
+            border-radius: 20px;
+            background-color: RGB(33, 30, 30, 0.8);
+            padding: 1em 0 1.5em 4em;
+            color: white;
+            width: 45%;
+            height: 70%;
+            overflow-y: scroll;
+            display: flex;
+        }
+
+        .input-wrapper {
+            position: relative;
+            left: 30%;
+            width: 150%;
+        }
+
+        label {
+            padding-top: 1em;
+            font-size: 1.5em;
+        }
+
+        .add-button {
+            margin-top: 2em;
+            margin-bottom: 1em;
+            background-color: #8338EC;
+        }
+
+        .create-title {
+            position: absolute;
+            top: 10%;
+            color: white;
+            font-size: 2em;
+            padding-left: 2em;
+            font-family: 'Paytone One', sans-serif;
+            font-weight: bolder;
+        }
+
+        .back-list {
+            position: absolute;
+            top: 15%;
+            right: 5%;
+        }
+
+        .back-list a {
+            color: white;
+        }
+
+        .back-list a:hover {
+            color: aqua;
+        }
+
+        ::-webkit-scrollbar {
+            width: 20px;
+        }
+
+        ::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 5px grey;
+            border-radius: 10px;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: RGB(33, 30, 30, 0.8);
+            border-radius: 10px;
+        }
+    </style>
+}

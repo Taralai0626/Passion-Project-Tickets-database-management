@@ -1,0 +1,17 @@
+﻿body {
+    background-color: aqua;
+    background-image: url("../Content/image/events.jpg") !important;
+    height: 100%;
+    background-position:top;
+    background-repeat: no-repeat;
+    background-size:cover;
+    overflow:hidden;
+}
+
+footer{
+    color:aliceblue;
+    font-size:12px;
+    font-weight:bolder;
+    position:absolute;
+    bottom:0;
+}

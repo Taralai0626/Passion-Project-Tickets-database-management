@@ -1,0 +1,48 @@
+﻿@model StoreTicket.Models.PassionuserDto
+
+@{
+    ViewBag.Title = "DeleteConfirm";
+}
+
+<div class="confirm-container">
+    <div>
+        <h2>Are you sure you want to delete this @Model.UserFirstName @Model.UserLastName?</h2>
+    </div>>
+    <div>
+        <form action="/User/Delete/@Model.UserId" method="POST">
+            <input class="btn btn-primary del-button" type="submit" value="Confirm Delete" />
+            <a href="/User/List"><input class="btn btn-primary del-button" type="button" value="Cancel" /></a>
+        </form>
+    </div>
+</div>
+@section Styles
+{
+    <style type="text/css">
+
+        h2 {
+            font-family: 'Paytone One', sans-serif;
+            font-weight: bolder;
+            color: white;
+            font-size: 2em;
+        }
+
+        .cancel-btn a {
+            display: flex;
+            justify-content: end;
+            color: #8338EC;
+        }
+
+        .del-button {
+            background-color: #8338EC;
+        }
+
+        .confirm-container {
+            display: flex;
+            flex-direction: column;
+            height: 60vh;
+            vertical-align: middle;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+}

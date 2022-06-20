@@ -1,0 +1,112 @@
+﻿@model IEnumerable<StoreTicket.Models.Passionuser>
+@{
+    ViewBag.Title = "Create";
+}
+<div class="back-list">
+    <a href="/User/List">Go Back To List</a>
+</div>
+<br />
+<h2 class="create-title">Create New User</h2>
+<br />
+<div class="form-wrapper">
+    <form class="form-floating" action="/User/Create" method="POST">
+        <div class="input-wrapper">
+            <div>
+                <label for="floatingInput">First Name:</label> <input class="form-control" id="floatingInput" type="text" name="UserFirstName" />
+            </div>
+            <div>
+                <label for="floatingInput">Last Name:</label> <input class="form-control" id="floatingInput" type="text" name="UserLastName" />
+            </div>
+            <div>
+                <label for="floatingInput">Account ID:</label> <input class="form-control" id="floatingInput" type="text" name="AccountName" />
+            </div>
+            <div>
+                <label for="floatingInput">Phone:</label> <input class="form-control" id="floatingInput" type="tel" name="PhoneNnumber" />
+            </div>
+            <div>
+                <label for="floatingInput">Email:</label> <input class="form-control" id="floatingInput" type="email" name="EmailAddress" />
+            </div>
+            <div>
+                <label for="floatingInput">Date of Birth:</label> <input class="form-control" id="floatingInput" type="date" name="BirthDate" />
+            </div>
+            <div>
+                <input class="btn btn-primary add-button" type="submit" value="Add User" />
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Styles
+{
+    <style type="text/css">
+        .form-wrapper {
+            position: absolute;
+            top: 22%;
+            left: 27%;
+            border-radius: 20px;
+            background-color: RGB(33, 30, 30, 0.8);
+            padding: 1em 0 1.5em 4em;
+            color: white;
+            width: 45%;
+            height: 70%;
+            overflow-y: scroll;
+            display:flex;
+        }
+
+        label {
+            padding-top: 1em;
+            font-size: 1.5em;
+        }
+
+        .input-wrapper {
+            position: relative;
+            left: 35%;
+            width:150%;
+        }
+
+        .add-button {
+            margin-top: 2em;
+            margin-bottom: 1em;
+            background-color:#8338EC;
+        }
+
+        .create-title {
+            position: absolute;
+            top: 10%;
+            color: white;
+            font-size: 2em;
+            padding-left: 2em;
+            font-family: 'Paytone One', sans-serif;
+            font-weight: bolder;
+        }
+
+        .back-list {
+            position: absolute;
+            top: 15%;
+            right: 5%;
+        }
+
+        .back-list a {
+            color: white;
+        }
+
+        .back-list a:hover {
+            color: aqua;
+        }
+
+        ::-webkit-scrollbar {
+            width: 20px;
+        }
+
+        ::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 5px grey;
+            border-radius: 10px;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: RGB(33, 30, 30, 0.8);
+            border-radius: 10px;
+        }
+    </style>
+}

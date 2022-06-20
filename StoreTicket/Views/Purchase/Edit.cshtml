@@ -1,0 +1,36 @@
+﻿@model StoreTicket.Models.PurchaseDto
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Update Purchase</h2>
+<a href="/User/List">Go back to list</a>
+<br />
+<form action="/Purchase/Update/@Model.PurchaseId" method="POST">
+    <div style="display:none;">
+        @* Pass through the Purchase ID *@
+        <input type="text" name="UserID" value="@Model.PurchaseId" />
+    </div>
+    <div>
+        <label>Purchase Id: </label> <input type="number" name="PurchaseId" value="@Model.PurchaseId" />
+    </div>
+    <div>
+        <label>User Id: </label> <input type="text" name="UserId" value="@Model.UserId" />
+    </div>
+    <div>
+        <label>Ticket Id: </label> <input type="text" name="TicketId" value="@Model.TicketId" />
+    </div>
+    <div>
+        <label>Purchase Date: </label> <input type="text" name="PurchaseDate" value="@Model.PurchaseDate" />
+    </div>
+    <div>
+        <label>Purchase Price: </label> <input type="text" name="PurchasePrice" value="@Model.PurchasePrice" />
+    </div>
+    <div>
+        <label>Number Of Ticket: </label> <input type="date" name="NumberOfTicket" value="@Model.NumberOfTicket" />
+    </div>
+    <div>
+        <input type="submit" value="Update User" />
+    </div>
+</form>

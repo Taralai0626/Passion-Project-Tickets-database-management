@@ -1,0 +1,19 @@
+﻿@model IEnumerable<StoreTicket.Models.PurchaseDto>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+<a href="/purchase/New">Add New Purchase</a>
+@foreach (var purchase in Model)
+{
+    <h3><a href="/Purchase/Details/@purchase.PurchaseId">@purchase.PurchaseId</a></h3>
+    <h4><strong>User Id: </strong>@purchase.UserId &#10132;<a href="/User/Details/@purchase.UserId"> User Detail</a></h4>
+    <h4><strong>Ticket Id: </strong> @purchase.TicketId &#10132;<a href="/Ticket/Details/@purchase.TicketId"> Ticket Detail</a></h4>
+    //<h4><strong>Purchase Date: </strong> @purchase.PurchaseDate</h4>
+    //<h4><strong>Purchace Price: </strong>@purchase.PurchacePrice</h4>
+    //<h4><strong>Number Of Ticket: </strong>@purchase.NumberOfTicket</h4>
+
+
+
+}

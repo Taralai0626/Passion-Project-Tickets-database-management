@@ -1,0 +1,139 @@
+﻿@model IEnumerable<StoreTicket.Models.WebsiteDto>
+@{
+    ViewBag.Title = "Create";
+}
+<div class="back-list">
+    <a href="/Ticket/List">Go back to list</a>
+</div>
+   
+<h2 class="create-title">Create New Ticket</h2>
+   
+<div class="form-wrapper">
+    <form class="form-floating" action="/Ticket/Create" method="POST">
+        <div class="input-wrapper">
+            <div class="select-wrapper">
+                <label for="floatingInput">Website:</label>
+                <select name="WebsiteId">
+                    @foreach (var website in Model)
+                    {
+                        <option class="option-list" id="floatingInput" value="@website.WebsiteId">@website.WebsiteId  @website.WebsiteName</option>
+                    }
+                </select>
+            </div>
+            <div>
+                <label for="floatingInput">Event Name:</label> <input class="form-control form-input" id="floatingInputInvalid" type="text" name="EventName" />
+            </div>
+            <div>
+                <label for="floatingInput">Event Type:</label> <input class="form-control" id="floatingInputInvalid" type="text" name="EventType" />
+            </div>
+            <div>
+                <label for="floatingInput">Venue:</label> <input class="form-control" id="floatingInputInvalid" type="text" name="EventVenue" />
+            </div>
+            <div>
+                <label for="floatingInput">Location:</label> <input class="form-control" id="floatingInputInvalid" type="text" name="EventLocation" />
+            </div>
+            <div>
+                <label for="floatingInput">Date:</label> <input class="form-control" id="floatingInputInvalid" type="date" name="EventDate" />
+            </div>
+            <div>
+                <label for="floatingInput">Starting Price:</label> <input class="form-control" id="floatingInputInvalid" type="text" name="TicketStartingPrice" />
+            </div>
+            <div>
+                <input class="btn btn-primary add-button" type="submit" value="Add Ticket" />
+            </div>
+        </div>
+    </form>
+</div>
+@section Styles
+{
+    <style type="text/css">
+        .form-wrapper {
+            position: absolute;
+            top: 22%;
+            left: 27%;
+            border-radius: 20px;
+            background-color: RGB(33, 30, 30, 0.8);
+            padding: 1em 0 1.5em 4em;
+            color: white;
+            width: 45%;
+            height: 70%;
+            overflow-y: scroll;
+            display: flex;
+        }
+
+        label {
+            margin-top: 0.5em;
+            font-size: 1.5em;
+        }
+
+        .input-wrapper {
+            position: relative;
+            left: 30%;
+            width: 150%;
+        }
+
+
+        .add-button {
+            margin-top: 2em;
+            margin-bottom: 1em;
+            background-color: #8338EC;
+        }
+
+        .create-title {
+            position: absolute;
+            top: 10%;
+            color: white;
+            font-size: 2em;
+            padding-left: 2em;
+            font-family: 'Paytone One', sans-serif;
+            font-weight: bolder;
+        }
+
+        .back-list {
+            position: absolute;
+            top: 15%;
+            right: 5%;
+        }
+
+        .back-list a {
+            color: white;
+        }
+
+        .back-list a:hover {
+            color: aqua;
+        }
+
+        .select-wrapper{
+            display:flex;
+            flex-direction:column;
+        }
+        select {
+            width: 280px;
+            height: 2.5em;
+            color: black;
+            border-radius: 5px;
+        }
+
+        option {
+            width: 280px;
+            height: 2.5em;
+        }
+
+        ::-webkit-scrollbar {
+            width: 20px;
+        }
+
+        ::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 5px grey;
+            border-radius: 10px;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: RGB(33, 30, 30, 0.8);
+            border-radius: 10px;
+        }
+    </style>
+}
+
+

@@ -1,0 +1,82 @@
+﻿@model IEnumerable<StoreTicket.Models.WebsiteDto>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2 class="list-title">Passion Website List</h2>
+<div class="add-ticket">
+    <a href="/Website/New">Add New Website</a>
+</div>
+<div class="list-group list-layout">
+    @foreach (var website in Model)
+    {
+        <h3><a href="/Website/Details/@website.WebsiteId">@website.WebsiteName</a></h3>
+        <h4><strong>Website Type: </strong>@website.WebsiteType</h4>
+    }
+</div>
+
+
+@section Styles
+{
+    <style type="text/css">
+        .list-layout {
+            position: absolute;
+            top: 25%;
+            left: 25%;
+            border-radius: 20px;
+            background-color: RGB(33, 30, 30, 0.8);
+            text-align: center;
+            width: 50%;
+            height: 60%;
+            padding: 2em;
+            color: white;
+            font-family: 'Roboto', sans-serif;
+            overflow-y: scroll;
+        }
+
+        h3 a {
+            color: deepskyblue
+        }
+
+        a:hover {
+            color: aqua;
+        }
+
+        .list-title {
+            color: white;
+            font-size: 2em;
+            padding-left: 2em;
+            font-family: 'Paytone One', sans-serif;
+            font-weight: bolder;
+        }
+
+        .add-ticket {
+            position: absolute;
+            top: 15%;
+            right: 5%;
+        }
+
+        .add-ticket a {
+            color: white;
+        }
+
+        .add-ticket a:hover {
+            color: aqua;
+        }
+
+        ::-webkit-scrollbar {
+            width: 20px;
+        }
+
+        ::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 5px grey;
+            border-radius: 10px;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: RGB(33, 30, 30, 0.8);
+            border-radius: 10px;
+        }
+    </style>
+}

@@ -1,0 +1,72 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+
+
+<div class="home-content">
+    <div class="tittle-wrapper">
+        <div class="home-title">
+            <h1>We Are Passion Tickets</h1>
+        </div>
+        <div class="titile-img">
+            <img class="peace-img" src="~/Content/image/peacesign.png" />
+        </div>
+    </div>
+    <div class="home-h2">
+        <h2>List With Confidence, Buy With Passion!</h2>
+    </div>
+</div>
+
+@section Styles
+{
+    <style type="text/css">
+        body{
+            margin:0;
+            padding:0;
+        }
+        h1 {
+            color: white;
+            font-family: 'Roboto', sans-serif;
+            font-size: 75px;
+            font-weight: bolder;
+        }
+        h2 {
+            color: white;
+            font-family: 'Roboto', sans-serif;
+            font-size: 4em;
+            font-weight:bolder;
+            padding-bottom:1em;
+            display:flex;
+            justify-content:center;
+        }
+
+        .peace-img {
+            width: 100px;
+            float: right;
+            
+        }
+
+        .home-content {
+            display: flex;
+            flex-direction: column-reverse;
+            position:absolute;
+            top:25%;
+            left:10%;
+            text-align: center;
+        }
+
+        .tittle-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+        }
+
+        .titile-img{
+            padding-left:1em;
+          
+        }
+        
+    </style>
+}
