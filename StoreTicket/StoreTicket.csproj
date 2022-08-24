@@ -235,6 +235,14 @@
     <Compile Include="Migrations\202206170254356_ticketphoto.designer.cs">
       <DependentUpon>202206170254356_ticketphoto.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202208240432013_PicExtension-Ticket.cs" />
+    <Compile Include="Migrations\202208240432013_PicExtension-Ticket.designer.cs">
+      <DependentUpon>202208240432013_PicExtension-Ticket.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202208240434254_TicketHasPic-Ticket.cs" />
+    <Compile Include="Migrations\202208240434254_TicketHasPic-Ticket.designer.cs">
+      <DependentUpon>202208240434254_TicketHasPic-Ticket.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -331,11 +339,14 @@
     <Content Include="Views\Website\Edit.cshtml" />
     <Content Include="Views\Website\Details.cshtml" />
     <Content Include="Views\Website\DeleteConfirm.cshtml" />
+    <Content Include="Views\Purchase\Temp.cshtml" />
+    <Content Include="Views\Temp\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\image\" />
     <Folder Include="Views\Shared\Purchase\" />
+    <Folder Include="Views\Test\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -380,6 +391,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202206170254356_ticketphoto.resx">
       <DependentUpon>202206170254356_ticketphoto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202208240432013_PicExtension-Ticket.resx">
+      <DependentUpon>202208240432013_PicExtension-Ticket.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202208240434254_TicketHasPic-Ticket.resx">
+      <DependentUpon>202208240434254_TicketHasPic-Ticket.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

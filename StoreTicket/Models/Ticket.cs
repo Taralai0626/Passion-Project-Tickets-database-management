@@ -30,7 +30,8 @@ namespace StoreTicket.Models
 
         public double TicketStartingPrice { get; set; }
 
-        public string TicketPhoto { get; set; }
+        public bool TicketHasPic { get; set; }
+        public string PicExtension { get; set; }
 
         // a ticket can be purchased by many users
         // a user can have many tickets 
@@ -56,7 +57,9 @@ namespace StoreTicket.Models
 
         public double TicketStartingPrice { get; set; }
 
-        public string TicketPhoto { get; set; }
+        public bool TicketHasPic { get; set; }
+
+        public string PicExtension { get; set; }
 
     }
 }

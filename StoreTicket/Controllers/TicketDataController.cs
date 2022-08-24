@@ -38,7 +38,8 @@ namespace StoreTicket.Controllers
                 EventLocation = t.EventLocation,
                 EventDate = t.EventDate,
                 TicketStartingPrice = t.TicketStartingPrice,
-                TicketPhoto = t.TicketPhoto
+                TicketHasPic = t.TicketHasPic,
+                PicExtension = t.PicExtension,
             }));
 
             return Ok(TicketDtos);
@@ -154,7 +155,8 @@ namespace StoreTicket.Controllers
                 EventLocation = ticket.EventLocation,
                 EventDate = ticket.EventDate,
                 TicketStartingPrice = ticket.TicketStartingPrice,
-                TicketPhoto = ticket.TicketPhoto,
+                TicketHasPic = ticket.TicketHasPic,
+                PicExtension = ticket.PicExtension,
             };
             if (ticket == null)
             {
@@ -181,9 +183,9 @@ namespace StoreTicket.Controllers
 
 
             db.Entry(ticket).State = EntityState.Modified;
-            //db.Entry(animal).Property(a => a.AnimalHasPic).IsModified = false;
-            db.Entry(ticket).Property(t => t.TicketPhoto).IsModified = false;
-
+            db.Entry(ticket).Property(t => t.TicketHasPic).IsModified = false;
+            db.Entry(ticket).Property(t => t.PicExtension).IsModified = false;
+            
             try
             {
                 db.SaveChanges();
@@ -207,8 +209,8 @@ namespace StoreTicket.Controllers
         public IHttpActionResult UploadTicketPic(int id)
         {
 
-            //bool haspic = false;
-            string TicketPhoto;
+            bool haspic = false;
+            string picextension;
             if (Request.Content.IsMimeMultipartContent())
             {
                 Debug.WriteLine("Received multipart form data.");
@@ -225,14 +227,14 @@ namespace StoreTicket.Controllers
                     {
                         //establish valid file types (can be changed to other file extensions if desired!)
                         var valtypes = new[] { "jpeg", "jpg", "png", "gif", "webp" };
-                        var picOfTicket = Path.GetExtension(ticketPic.FileName).Substring(1);
+                        var extension = Path.GetExtension(ticketPic.FileName).Substring(1);
                         //Check the picOfTicket of the file
-                        if (valtypes.Contains(picOfTicket))
+                        if (valtypes.Contains(extension))
                         {
                             try
                             {
                                 //file name is the id of the image
-                                string fn = id + "." + picOfTicket;
+                                string fn = id + "." + extension;
 
                                 //get a direct file path to ~/Content/tickets/{id}.{extension}
                                 string path = Path.Combine(HttpContext.Current.Server.MapPath("~/Content/Images/Tickets/"), fn);
@@ -241,13 +243,13 @@ namespace StoreTicket.Controllers
                                 ticketPic.SaveAs(path);
 
                                 //if these are all successful then we can set these fields
-                                //haspic = true;
-                                TicketPhoto = picOfTicket;
+                                haspic = true;
+                                picextension = extension;
 
                                 //Update the t fields in the database
                                 Ticket Selectedticket = db.Tickets.Find(id);
-                               // Selectedticket.TicketHasPic = haspic;
-                                Selectedticket.TicketPhoto = picOfTicket;
+                                Selectedticket.TicketHasPic = haspic;
+                                Selectedticket.PicExtension = extension;
                                 db.Entry(Selectedticket).State = EntityState.Modified;
 
                                 db.SaveChanges();
@@ -301,10 +303,10 @@ namespace StoreTicket.Controllers
                 return NotFound();
             }
 
-            if ( ticket.TicketPhoto != "")
+            if (ticket.TicketHasPic && ticket.PicExtension != "")
             {
                 //also delete image from path
-                string path = HttpContext.Current.Server.MapPath("~/Content/Images/Tickets/" + id + "." + ticket.TicketPhoto);
+                string path = HttpContext.Current.Server.MapPath("~/Content/Images/Tickets/" + id + "." + ticket.PicExtension);
                 if (System.IO.File.Exists(path))
                 {
                     Debug.WriteLine("File exists... preparing to delete!");

@@ -11,12 +11,14 @@
 <div class="content-wrapper">
     @{
         string imageurl = "/Content/Images/Tickets/default.jpg";
+        if (Model.SelectedTicket.TicketHasPic)
+        {
+            imageurl = "/Content/Images/Tickets/" + Model.SelectedTicket.TicketId + "." + Model.SelectedTicket.PicExtension;
 
-        imageurl = "/Content/Images/Tickets/" + Model.SelectedTicket.TicketId + "." + Model.SelectedTicket.TicketPhoto;
-
+        }
     }
-    <!-- <div class="img-wrapper"><img style="display:block; max-width:100%;" alt="@Model.SelectedTicket.EventName" src="@imageurl"/></div>-->
-    <div class="img-wrapper"><img style="display:block; max-width:100%;" src="~/Content/image/GlassAnimals.jpg" /></div>
+    <div class="img-wrapper"><img style="display:block; max-width:100%;" alt="@Model.SelectedTicket.EventName" src="@imageurl" /></div>
+    <!--<div class="img-wrapper"><img style="display:block; max-width:100%;" src="~/Content/image/GlassAnimals.jpg" /></div>-->
     <div class="detail-wrapper">
         <div class="ticket-delete">
             <a href="/Ticket/DeleteConfirm/@Model.SelectedTicket.TicketId">Delete</a>
@@ -60,159 +62,159 @@
     </div>
 </div>
 
-@section Styles
-{
-    <style type="text/css">
-        .list-title {
-            color: white;
-            font-size: 2em;
-            padding-left: 2em;
-            font-family: 'Paytone One', sans-serif;
-            font-weight: bolder;
-        }
-        .option-list {
-            color: white;
-            display: flex;
-            flex-direction: row;
-            position: absolute;
-            top: 12%;
-            right: 5%;
-        }
+    @section Styles
+    {
+        <style type="text/css">
+            .list-title {
+                color: white;
+                font-size: 2em;
+                padding-left: 2em;
+                font-family: 'Paytone One', sans-serif;
+                font-weight: bolder;
+            }
+            .option-list {
+                color: white;
+                display: flex;
+                flex-direction: row;
+                position: absolute;
+                top: 12%;
+                right: 5%;
+            }
 
-        .option-list a, p{
-            color: white;
-            margin-left: 1em;
-        }
+            .option-list a, p{
+                color: white;
+                margin-left: 1em;
+            }
 
-        .option-list a:hover {
-            color: aqua;
-        }
-        .ticket-delete a{
-            display: flex;
-            justify-content: end;
-            color: #8338EC;
+            .option-list a:hover {
+                color: aqua;
+            }
+            .ticket-delete a{
+                display: flex;
+                justify-content: end;
+                color: #8338EC;
 
-        }
+            }
 
-        .content-wrapper {
-            position: absolute;
-            top: 20%;
-            left: 10%;
-            display: flex;
-            flex-direction: row;
-            gap: 4em;
-            width: 80%;
-            justify-content: center;
-        }
+            .content-wrapper {
+                position: absolute;
+                top: 20%;
+                left: 10%;
+                display: flex;
+                flex-direction: row;
+                gap: 4em;
+                width: 80%;
+                justify-content: center;
+            }
 
-        .img-wrapper {
-            border-radius: 20px;
-            background-color: RGB(33, 30, 30, 0.8);
-            width: 60vw;
-            height: 70vh;
-            
-        }
-        .img-wrapper img {
-            position: relative;
-            width:90%;
-            top:20%;
-            left:5%;
-        }
-        .detail-wrapper {
-            /*position: absolute;
-        top: 25%;
-        left: 25%;*/
-            border-radius: 20px;
-            background-color: RGB(33, 30, 30, 0.8);
-            text-align: center;
-            width: 60vw;
-            height: 70vh;
-            padding: 2em;
-            color: white;
-            font-family: 'Roboto', sans-serif;
-        }
+            .img-wrapper {
+                border-radius: 20px;
+                background-color: RGB(33, 30, 30, 0.8);
+                width: 60vw;
+                height: 70vh;
 
-        .associate-wrapper {
-            border-radius: 20px;
-            background-color: RGB(33, 30, 30, 0.8);
-            text-align: left;
-            width: 60vw;
-            height: 70vh;
-            color: white;
-            gap: 3em;
-            font-size: 1em;
-        }
+            }
+            .img-wrapper img {
+                position: relative;
+                width:90%;
+                top:2.5%;
+                left:5%;
+            }
+            .detail-wrapper {
+                /*position: absolute;
+            top: 25%;
+            left: 25%;*/
+                border-radius: 20px;
+                background-color: RGB(33, 30, 30, 0.8);
+                text-align: center;
+                width: 60vw;
+                height: 70vh;
+                padding: 2em;
+                color: white;
+                font-family: 'Roboto', sans-serif;
+            }
 
-        .associate-wrapper a {
-            color: white;
-        }
+            .associate-wrapper {
+                border-radius: 20px;
+                background-color: RGB(33, 30, 30, 0.8);
+                text-align: left;
+                width: 60vw;
+                height: 70vh;
+                color: white;
+                gap: 3em;
+                font-size: 1em;
+            }
 
-        .associate-wrapper a:hover {
-            color:aqua;
-        }
+            .associate-wrapper a {
+                color: white;
+            }
 
-        .associate_tittle{
-            padding: 2em 0;
-            text-align:center;
-        }
+            .associate-wrapper a:hover {
+                color:aqua;
+            }
 
-        .associate_tittle h5{
-            font-size:18px;
-            font-weight:bolder;
-        }
+            .associate_tittle{
+                padding: 2em 0;
+                text-align:center;
+            }
 
-        .add-associate {
-            padding-top: 2em;
-        }
+            .associate_tittle h5{
+                font-size:18px;
+                font-weight:bolder;
+            }
 
-        .select-wrapper{
-            display:flex;
-            flex-direction:row;
-            justify-content:center;
-        }
+            .add-associate {
+                padding-top: 2em;
+            }
 
-        select {
-            width: 125px;
-            height: 2em;
-            color: black;
-            border-radius: 5px;
-            
-        }
+            .select-wrapper{
+                display:flex;
+                flex-direction:row;
+                justify-content:center;
+            }
 
-        option {
-            width: 150px;
-            height: 2.5em;
-        }
+            select {
+                width: 125px;
+                height: 2em;
+                color: black;
+                border-radius: 5px;
 
-        .add-button {    
-            background-color: #8338EC;
-        }
+            }
 
-        .listUsers {
-            border-radius: 20px;
-            height: 50%;
-            width:80%;
-            background-color: rgba(131, 56, 236, 0.3);
-            overflow-y: scroll;
-            padding: 1em;
-            margin-left: 1.5em;
-            font-size: 1.5em;
-        }
+            option {
+                width: 150px;
+                height: 2.5em;
+            }
 
-        ::-webkit-scrollbar {
-            width: 20px;
-        }
+            .add-button {
+                background-color: #8338EC;
+            }
 
-        ::-webkit-scrollbar-track {
-            box-shadow: inset 0 0 5px grey;
-            border-radius: 10px;
-        }
+            .listUsers {
+                border-radius: 20px;
+                height: 50%;
+                width:80%;
+                background-color: rgba(131, 56, 236, 0.3);
+                overflow-y: scroll;
+                padding: 1em;
+                margin-left: 1.5em;
+                font-size: 1.5em;
+            }
 
-        /* Handle */
-        ::-webkit-scrollbar-thumb {
-            background: RGB(33, 30, 30, 0.8);
-            border-radius: 10px;
-        }
+            ::-webkit-scrollbar {
+                width: 20px;
+            }
 
-    </style>
-}
+            ::-webkit-scrollbar-track {
+                box-shadow: inset 0 0 5px grey;
+                border-radius: 10px;
+            }
+
+            /* Handle */
+            ::-webkit-scrollbar-thumb {
+                background: RGB(33, 30, 30, 0.8);
+                border-radius: 10px;
+            }
+
+        </style>
+    }
