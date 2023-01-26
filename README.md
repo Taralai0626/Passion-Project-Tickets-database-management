@@ -1,6 +1,5 @@
 # My Passion Tickets
-My passion tickets is an app that users who love concerts and sports to record the tickets they bought, so they would not miss the date for their favorite events![image](https://user-images.githubusercontent.com/98551893/214899829-dadac503-d3ff-4f33-bb3e-d2fd76d96c2e.png)
-
+My passion tickets is an app that users who love concerts and sports to record the tickets they bought, so they would not miss the date for their favorite events!
 
 Please check the video https://youtu.be/LO3c6k3tLw8 to see the full discription 
 
